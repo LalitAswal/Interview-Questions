@@ -14,7 +14,7 @@
 // // Output: true
 // // Explanation: s is an empty string "" after removing non-alphanumeric characters.
 // // Since an empty string reads the same forward and backward, it is a palindrome.
-
+// question 1
 function palindrome(s){
     if (!s) return false;
     if (s.length === 1) return true;
@@ -37,3 +37,39 @@ function palindrome(s){
 // console.log(palindrome(s));
 // // console.log(palindrome(s2));
 // // console.log(palindrome(s3));
+
+
+// Example 1:
+// Input: s = "anagram", t = "nagaram"
+// Output: true
+// Example 2:
+
+// Input: s = "rat", t = "car"
+// Output: false
+// question 2
+function anagram(s,t){
+    if(!s || !t ||s.length !== t.length)  {
+
+        return false;
+    }
+    let p = s.split('').sort();
+    let e = t.split('').sort();
+
+    let arr =[];
+    for (x =0; x< p.length; x ++){
+        if( p[x] === e[x]){
+            arr.push(true)
+        } else {
+            arr.push(false)
+        }   
+    }
+    if(arr.includes(false)) return false;
+    return true 
+
+
+}
+s = "anagram"
+t = "nagaram"
+// let s = "acca"
+// let t ="ccca"
+console.log(anagram(s,t));
