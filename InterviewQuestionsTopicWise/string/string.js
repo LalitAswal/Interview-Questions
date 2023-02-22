@@ -56,7 +56,7 @@ function anagram(s,t){
     let e = t.split('').sort();
 
     let arr =[];
-    for (x =0; x< p.length; x ++){
+    for (let x =0; x< p.length; x ++){
         if( p[x] === e[x]){
             arr.push(true)
         } else {
@@ -68,8 +68,41 @@ function anagram(s,t){
 
 
 }
-s = "anagram"
-t = "nagaram"
-// let s = "acca"
-// let t ="ccca"
-console.log(anagram(s,t));
+// s = "anagram"
+// t = "nagaram"
+// let s = "acca";
+// let t ="ccca";
+// console.log(anagram(s,t));
+
+
+const isValid =function(s){
+    let stack =[];
+    for( let x of s){
+        if( x ==='(') stack.push(')')
+        else if(x==='[') stack.push(']')
+        else if(x==='{') stack.push('}')
+        else if( stack.length ==0 || stack.pop() !==x) return false
+
+    }
+    return stack.length === 0 
+} 
+const isValid1 =(s) =>{
+    let stack=[]
+    const hashPair ={'(':')','{':'}','[':']'};
+    for( let i = 0; i< s.length; i ++){
+        let char = s[i];
+        // console.log(hashPair[char])
+        if(hashPair[char]){
+            stack.push(char)
+        } else if( hashPair[stack.pop(char)] !==char) {
+            return false
+        }
+        console.log(stack)
+    }
+    return stack.length ===0
+
+}
+let s = "()[[]]{}"
+console.log(isValid(s))
+
+    
